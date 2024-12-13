@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.container {
+    display: flex;
+    position: relative;
+    width: 60%;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.green-triangle {
+    width: 30%;
+    background-color: #7aff5d;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.form-container {
+    padding: 40px;
+    width: 950px;
+    box-sizing: border-box;
+    background-color: violet;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+p {
+    margin: 10px 0 20px;
+    color: #666;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: left;
+    flex-direction:row !important;
+    gap: 50px;
+}
+
+.step {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    z-index: 1;
+    position: relative;
+}
+
+.step.active {
+    background-color: #007bff;
+}
+
+.progress-bar span {
+    margin-right: 20px;
+    color: #666;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #ccc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: not-allowed;
+}
+.line{
+    background-color: aqua;
+}
+.step1{
+    background-color: aqua;
+    
+}
+.step2{
+    background-color: rgb(163, 163, 225);
+}
+.step3{
+    background-color: rgb(176, 229, 176);
+}
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 149px;
+    left: 560px;
+    right: 310px;
+    height: 2px;
+    background-color: #ccc;
+    z-index: 0;
+    transform: translateY(-50%);
+}
+.step-active {
+    background-color: #007bff;
+}
+.mail{
+    background-color: royalblue;
+    width: 730px !important;
+}

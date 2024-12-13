@@ -4,3 +4,5 @@ fetch("Navbar.html")
         document.getElementById('navbar').innerHTML = data;
       })
       .catch(error => console.error('Không thể tải Navbar:', error));
+
+      
