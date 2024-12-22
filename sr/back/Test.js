@@ -9,19 +9,18 @@ const client = new MongoClient(dbkey, {
     deprecationErrors: true,
   },
 });
+
 async function run() {
   try {
+    // Wait for connection to database first
+    await client.connect();
     // Get the whole database object
-    const database = client.db("sample_mflix");
+    const db = client.db("Soccer_Field_App_DB");
     // Get the collection before query
-    const comments = database.collection("theaters");
+    const field = db.collection("Field");
 
-    // Execute the query returned a cursor
-    const dataCursor = comments.find({ theaterId: 1000 });
-
-    for await (const data of dataCursor) {
-      console.dir(data);
-    }
+    await field.insertOne({ name: "Phu Tho", location: "LTK" });
+    console.log("A document was inserted");
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
