@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         steps[currentStep].classList.add("step-active");
 
         
-        nextButton.innerText = currentStep === steps.length - 1 ? "Finish" : "Next";
+        nextButton.innerText = currentStep === steps.length - 1 ? "Submit" : "Next";
     }
 
     
