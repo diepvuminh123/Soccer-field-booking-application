@@ -11,14 +11,14 @@ app.use(cors())
 app.post("/api/register", (req, res) => {
     const userInfo = req.body;
     AccountController.RegisterController(userInfo.name, userInfo.email, userInfo.password, userInfo.phone, userInfo.address)
-    .then((register) => {
-        if (register == true) {
+    .then((response) => {
+        if (response == true) {
           res.status(201).json({
             message: "Register Account Success",
           });
         } else {
           res.status(400).json({
-            message: "Register Account Failed",
+            message: response.response,
           });
         }
     });
@@ -37,6 +37,16 @@ app.post("/api/login", async (req, res) => {
             });
         }
     })
+})
+
+app.get("/api/auth", (req, res) => {
+    AccountController.isAuth().then((status) => {
+        if (status == true) {
+          res.status(201).json({
+            message: "User currently authenticated",
+          });
+        }
+    });
 })
 
 // Lắng nghe yêu cầu tại cổng

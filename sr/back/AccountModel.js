@@ -22,11 +22,17 @@ async function RegisterAccount(userAuth) {
     const db = client.db("Soccer_Field_App_DB");
     // Get the collection before query
     const userCol = db.collection("User");
-
+    const email = userAuth.email
+    const checkUser = await userCol.findOne({email});
+    if (checkUser) {
+      console.log("User already existed!")
+      return { ack: false, response: "User already existed!"}
+    }
+    
     const newUser = await userCol.insertOne(userAuth);
     console.log("Created a user");
 
-    return newUser.acknowledged;
+    return { ack: newUser.acknowledged }
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
@@ -105,9 +111,46 @@ function refreshToken() {
   });
 }
 
+async function UserAccount(credential) {
+  try {
+    // Wait for connection to database first
+    await client.connect();
+    // Get the whole database object
+    const db = client.db("Soccer_Field_App_DB");
+    // Get the collection before query
+    const userCol = db.collection("User");
+
+    const loginUser = await userCol.findOne(credential);
+
+    if (loginUser != null) {
+      console.log("Found User! Logging in...");
+      const token = jwt.sign(
+        { userID: loginUser._id, username: loginUser.email },
+        jwtKey,
+        {
+          expiresIn: 3600, // 1h
+        }
+      );
+      key.userToken = token;
+      // Write token to key.json
+      fs.writeFile("sr/back/key.json", JSON.stringify(key, null, 2), (err) => {
+        if (err) throw err;
+        console.log("Done writing token");
+      });
+    } else {
+      console.log("User not found");
+    }
+    return loginUser;
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+
 module.exports = {
   RegisterAccount,
   LoginAccount,
   LogoutAccount,
   checkAuth,
+  UserAccount,
 };

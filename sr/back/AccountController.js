@@ -9,9 +9,11 @@ function RegisterController(name, email, password, phone, address) {
     email: email,
     password: password,
   };
-  return AccountModel.RegisterAccount(userInfo).then((ack) => {
-    if (ack == true) {
+  return AccountModel.RegisterAccount(userInfo).then((response) => {
+    if (response.ack == true) {
       return LoginController(email, password);
+    } else {
+      return response;
     }
   });
 }
@@ -38,10 +40,6 @@ function isAuth() {
     return false;
   }
 }
-// RegisterController("Nguyen Van A", "abc@gmail.com", "abc123", "0123456789");
-// LoginController("abc@gmail.com", "abc123");
-// LogoutController();
-// console.log(isAuth());
 
 module.exports = {
   RegisterController,
