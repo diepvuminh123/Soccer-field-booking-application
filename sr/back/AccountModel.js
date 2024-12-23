@@ -1,9 +1,9 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const fs = require("fs");
+const jwt = require("jsonwebtoken");
 const key = require("./key.json");
 const dbkey = key.dbkey;
 const jwtKey = key.jwt_secret_key;
-const jwt = require("jsonwebtoken");
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(dbkey, {
@@ -25,6 +25,7 @@ async function RegisterAccount(userAuth) {
 
     const newUser = await userCol.insertOne(userAuth);
     console.log("Created a user");
+
     return newUser.acknowledged;
   } finally {
     // Ensures that the client will close when you finish/error
@@ -42,6 +43,7 @@ async function LoginAccount(credential) {
     const userCol = db.collection("User");
 
     const loginUser = await userCol.findOne(credential);
+
     if (loginUser != null) {
       console.log("Found User! Logging in...");
       const token = jwt.sign(

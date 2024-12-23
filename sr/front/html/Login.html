@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <script src="../js/Navbar.js"></script>
+    <script src="../js/Login.js"></script>
+    
     <link rel="stylesheet" href="../css/Login.css">
     <!--Link bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -17,7 +19,7 @@
         <div class="green-triangle"></div>
 
         <!-- Form -->
-        <div class="form-container">
+        <form class="form-container" id="LoginForm">
             <h1>Sign in</h1>
             <p>Don’t have account yet? <a href="../html/Register.html">SignUp</a></p>
 
@@ -31,8 +33,8 @@
                 <input type="password" id="password" placeholder="Enter your password">
             </div>
 
-            <button type="button" id="next-btn" class="btn btn-success mt-3 ml-4 w-75 ms-5">Sign in</button>
-        </div>
+            <button type="submit" id="next-btn" class="btn btn-success mt-3 ml-4 w-75 ms-5">Sign in</button>
+        </form>
     </div>
 </body>
 </html>
