@@ -9,7 +9,9 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
   <link rel="stylesheet" href="../css/Home.css">
    <script src="../js/Navbar.js"></script>
+   <script src="../js/Footer.js"></script>
    <!-- Bootstrap js -->
+   <script src="../js/Home.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -101,14 +103,14 @@
               <h3>Khuyến Mãi Đặc Biệt Cuối Năm</h3>
               <p class="date">14/12/2024</p>
               <p>Giảm giá 20% cho tất cả các sân bóng! Nhanh tay lên!</p>
-              <button class="btn1">Đặt ngay!</button>
+              <button class="btn1 mt-4">Đặt ngay!</button>
           </div>
           <div class="news-item">
               <img src="../imagine/Sanbongdadep.jpg" alt="Sân bóng đẹp nhất thành phố">
               <h3>Sân Bóng Đẹp Nhất Thành Phố</h3>
               <p class="date">14/12/2024</p>
               <p>Khám phá sân bóng đẹp nhất với dịch vụ tuyệt vời! Đặt ngay!</p>
-              <button class="btn1">Đặt ngay!</button>
+              <button class="btn1 mt-4">Đặt ngay!</button>
           </div>
       </div>
   </div>
@@ -186,17 +188,17 @@
           </div>
       </div>
   </section>
-  <section class="statistics-section">
+<section class="statistics-section">
     <div class="stat-item">
-        <h2 class="stat-number">500<span class="plus">+</span></h2>
+        <h2 class="stat-number" data-target="500">0<span class="plus">+</span></h2>
         <p class="stat-label">Sân bóng</p>
     </div>
     <div class="stat-item">
-        <h2 class="stat-number">20<span class="plus">+</span></h2>
+        <h2 class="stat-number" data-target="20">0<span class="plus">+</span></h2>
         <p class="stat-label">Khu vực</p>
     </div>
     <div class="stat-item">
-        <h2 class="stat-number">1000<span class="plus">+</span></h2>
+        <h2 class="stat-number" data-target="1000">0<span class="plus">+</span></h2>
         <p class="stat-label">Người chơi</p>
     </div>
 </section>
@@ -211,8 +213,8 @@
       <textarea name="message" placeholder="Tin Nhắn" rows="5" required></textarea>
       <button type="submit" class="btn-submit">Gửi Ngay</button>
   </form>
-  <h3 class="info-title">Thông Tin</h3>
 </section>
  </main>
+ <footer><div id="Footer"></div></footer>
 </body>
 </html>
