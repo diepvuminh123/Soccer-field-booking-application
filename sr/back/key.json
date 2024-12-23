@@ -1,0 +1,5 @@
+{
+  "dbkey": "mongodb+srv://DatabaseDesigner:doancnpm@doancnpm.yg27j.mongodb.net/?retryWrites=true&w=majority&appName=DoAnCNPM",
+  "jwt_secret_key": "doancnpm",
+  "userToken": null
+}

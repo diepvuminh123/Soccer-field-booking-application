@@ -1,5 +1,4 @@
 const AccountModel = require("./AccountModel.js");
-const ObjectId = require("mongodb").ObjectId;
 
 function RegisterController(name, email, password, phone) {
   const userInfo = {
@@ -8,25 +7,34 @@ function RegisterController(name, email, password, phone) {
     phone: phone,
     email: email,
     password: password,
-    isLogin: true,
   };
-  AccountModel.RegisterAccount(userInfo).then((userID) => {
-    console.log(userID.toString());
+  AccountModel.RegisterAccount(userInfo).then((ack) => {
+    if (ack == true) {
+      LoginController(email, password);
+    }
   });
 }
 
 function LoginController(email, password) {
-  AccountModel.LoginAccount((credential = { email, password })).then(
-    (userID) => {
-      console.log(userID.toString());
-    }
-  );
+  AccountModel.LoginAccount({ email, password }).then((user) => {
+    console.dir(user);
+  });
 }
 
-function LogoutController(id) {
-  AccountModel.LogoutAccount(id);
+function LogoutController() {
+  AccountModel.LogoutAccount();
 }
 
+function isAuth() {
+  const auth = AccountModel.checkAuth();
+  if (auth != null) {
+    console.log(auth);
+    return true;
+  } else {
+    return false;
+  }
+}
 // RegisterController("Nguyen Van A", "abc@gmail.com", "abc123", "0123456789");
 // LoginController("abc@gmail.com", "abc123");
-// LogoutController(new ObjectId("67681bd8c133f7dde7ec88eb"));
+// LogoutController();
+// console.log(isAuth());

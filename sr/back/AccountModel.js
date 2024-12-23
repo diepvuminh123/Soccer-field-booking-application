@@ -1,5 +1,9 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const dbkey = require("./dbkey.json").key;
+const fs = require("fs");
+const key = require("./key.json");
+const dbkey = key.dbkey;
+const jwtKey = key.jwt_secret_key;
+const jwt = require("jsonwebtoken");
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(dbkey, {
@@ -21,9 +25,7 @@ async function RegisterAccount(userAuth) {
 
     const newUser = await userCol.insertOne(userAuth);
     console.log("Created a user");
-
-    // Return user ID (.toString() to get string)
-    return newUser.insertedId;
+    return newUser.acknowledged;
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
@@ -39,49 +41,71 @@ async function LoginAccount(credential) {
     // Get the collection before query
     const userCol = db.collection("User");
 
-    const updateStatus = { $set: { isLogin: true } };
-    const loginUser = await userCol.updateOne(credential, updateStatus);
-
-    if (loginUser.matchedCount != 0) {
-      console.log("Found User! Logged in");
-      // Return user ID (.toString() to get string)
-      const userInfo = await userCol.findOne(credential);
-      return userInfo._id;
+    const loginUser = await userCol.findOne(credential);
+    if (loginUser != null) {
+      console.log("Found User! Logging in...");
+      const token = jwt.sign(
+        { userID: loginUser._id, username: loginUser.email },
+        jwtKey,
+        {
+          expiresIn: 3600, // 1h
+        }
+      );
+      key.userToken = token;
+      // Write token to key.json
+      fs.writeFile("sr/back/key.json", JSON.stringify(key, null, 2), (err) => {
+        if (err) throw err;
+        console.log("Done writing token");
+      });
     } else {
       console.log("User not found");
-      return null;
     }
+    return loginUser;
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
   }
 }
 
-async function LogoutAccount(id) {
+async function LogoutAccount() {
+  key.userToken = null;
+  // Write token to key.json
+  fs.writeFile("sr/back/key.json", JSON.stringify(key, null, 2), (err) => {
+    if (err) throw err;
+    console.log("Done remove current token");
+  });
+}
+
+function checkAuth() {
   try {
-    // Wait for connection to database first
-    await client.connect();
-    // Get the whole database object
-    const db = client.db("Soccer_Field_App_DB");
-    // Get the collection before query
-    const userCol = db.collection("User");
-
-    const updateStatus = { $set: { isLogin: false } };
-    const logoutUser = await userCol.updateOne({ _id: id }, updateStatus);
-
-    if (logoutUser.modifiedCount == 1) {
-      console.log("Found User! Logging out...");
-    } else {
-      console.log("User not found or already logout");
-    }
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+    const decoded = jwt.verify(key.userToken, jwtKey);
+    return decoded;
+  } catch (err) {
+    console.log("Invalid or expired token");
+    return null;
   }
+}
+
+function refreshToken() {
+  const decoded = jwt.verify(key.userToken, jwtKey);
+  const token = jwt.sign(
+    { userID: decoded.userID, username: decoded.username },
+    jwtKey,
+    {
+      expiresIn: 3600, // 1h
+    }
+  );
+  key.userToken = token;
+  // Write token to key.json
+  fs.writeFile("sr/back/key.json", JSON.stringify(key, null, 2), (err) => {
+    if (err) throw err;
+    console.log("Done writing token");
+  });
 }
 
 module.exports = {
   RegisterAccount,
   LoginAccount,
   LogoutAccount,
+  checkAuth,
 };
