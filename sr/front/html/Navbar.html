@@ -31,9 +31,10 @@
             <img class="user" src="../imagine/user (1).png" alt="User" data-bs-toggle="dropdown" aria-expanded="false">
             <!-- Dropdown Menu -->
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
-                <li><a class="dropdown-item" href="../html/Login.html">Đăng nhập</a></li>
-                <li><a class="dropdown-item" href="../html/Register.html">Đăng ký</a></li>
+                <li id="infoItem"><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+                <li id="loginItem"><a class="dropdown-item" href="../html/Login.html">Đăng nhập</a></li>
+                <li id="registerItem"><a class="dropdown-item" href="../html/Register.html">Đăng ký</a></li>
+                <li id="logoutItem" style="display: none;"><a class="dropdown-item" onclick="logout()">Đăng xuất</a></li>
             </ul>
         </div>
         <img class="bell" src="../imagine/bell.png" alt="bell">
@@ -46,11 +47,7 @@
               Thông báo 3: Hết rồi đừng nhìn nữa<br>
           </div>
         </div>
-        
-    </div>
-  </header>
-  <main>
-    
-  </main>
+      </div>
+    </header>
 </body>
 </html>

@@ -82,6 +82,7 @@ async function LogoutAccount() {
     if (err) throw err;
     console.log("Done remove current token");
   });
+  return true;
 }
 
 function checkAuth() {

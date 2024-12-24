@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .then((response) => response.json())
           .then((data) => {
             alert(data.message);
+            window.location.href = "../html/Home.html";
           })
           .catch((error) => console.error("Error registering account:", error));;
     }

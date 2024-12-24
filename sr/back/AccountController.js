@@ -28,16 +28,17 @@ function LoginController(email, password) {
 }
 
 function LogoutController() {
-  AccountModel.LogoutAccount();
+  return AccountModel.LogoutAccount().then((response) => {
+    return response
+  });
 }
 
 function isAuth() {
   const auth = AccountModel.checkAuth();
   if (auth != null) {
-    console.log(auth);
-    return true;
+    return { isLoggedIn: true, userToken: auth };
   } else {
-    return false;
+    return { isLoggedIn: false };
   }
 }
 
