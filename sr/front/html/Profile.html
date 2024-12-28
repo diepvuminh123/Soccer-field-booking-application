@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/Profile.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+    <link rel="stylesheet" href="../css/Home.css">
+    <script src="../js/Navbar.js"></script>
+    <script src="../js/Footer.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Profile</title>
+</head>
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
+    <main>
+        <div class="container emp-profile">
+            <div class="row">
+                <!-- Phần trái: Thông tin cá nhân -->
+                <div class="col-lg-7 col-md-7 col-sm-12">
+                    <div class="profile-section">
+                        <div class="profile-img">
+                            <img id="profileImage" src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/9-anh-dai-dien-trang-inkythuatso-03-15-27-03.jpg" alt="Profile Image" />
+                            <input type="file" id="fileInput" name="file" accept="image/*" style="display: none;" />
+                        </div>
+                        <h3>Profile Information</h3>
+                        <div class="info">
+                            <p>
+                                <strong><i class="fas fa-user"></i> Name:</strong> 
+                                <span id="nameDisplay">Kshiti Ghelani</span>
+                                <input type="text" id="nameInput" class="form-control" style="display: none;" value="Kshiti Ghelani">
+                            </p>
+                            <p>
+                                <strong><i class="fas fa-envelope"></i> Email:</strong> 
+                                <span id="emailDisplay">kshitighelani@gmail.com</span>
+                                <input type="email" id="emailInput" class="form-control" style="display: none;" value="kshitighelani@gmail.com">
+                            </p>
+                            <p>
+                                <strong><i class="fas fa-phone"></i> Phone:</strong> 
+                                <span id="phoneDisplay">123 456 7890</span>
+                                <input type="text" id="phoneInput" class="form-control" style="display: none;" value="123 456 7890">
+                            </p>
+                            <p>
+                                <strong><i class="fas fa-map-marker-alt"></i> Address:</strong> 
+                                <span id="addressDisplay">123 Main Street, City, Country</span>
+                                <input type="text" id="addressInput" class="form-control" style="display: none;" value="123 Main Street, City, Country">
+                            </p>
+                        </div>
+                        <input type="button" class="profile-edit-btn btn btn-success mt-3" id="editButton" value="Edit Profile">
+                        <input type="button" class="profile-save-btn btn btn-primary mt-3" id="saveButton" value="Save" style="display: none;">
+                    </div>                    
+                </div>
+
+                <!-- Phần phải: Total Bookings -->
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <div class="total-bookings-section">
+                        <h3>Total Bookings</h3>
+                        <p style="font-size: 48px; font-weight: bold; color: #4CAF50;">12</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        const editButton = document.getElementById("editButton");
+        const saveButton = document.getElementById("saveButton");
+    
+        const nameDisplay = document.getElementById("nameDisplay");
+        const nameInput = document.getElementById("nameInput");
+    
+        const emailDisplay = document.getElementById("emailDisplay");
+        const emailInput = document.getElementById("emailInput");
+    
+        const phoneDisplay = document.getElementById("phoneDisplay");
+        const phoneInput = document.getElementById("phoneInput");
+    
+        const addressDisplay = document.getElementById("addressDisplay");
+        const addressInput = document.getElementById("addressInput");
+    
+        const profileImage = document.getElementById("profileImage");
+        const fileInput = document.getElementById("fileInput");
+    
+        // Khi nhấn vào ảnh, mở hộp thoại chọn file
+        profileImage.addEventListener("click", function () {
+            fileInput.click();
+        });
+    
+        // Khi thay đổi ảnh
+        fileInput.addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profileImage.src = e.target.result; // Hiển thị ảnh mới
+                    localStorage.setItem("profileImage", e.target.result); // Lưu ảnh vào localStorage
+                };
+                reader.readAsDataURL(file); // Đọc file ảnh
+            }
+        });
+    
+        // Khi nhấn Edit Profile
+        editButton.addEventListener("click", function () {
+            // Ẩn chế độ xem, hiển thị chế độ chỉnh sửa
+            nameDisplay.style.display = "none";
+            nameInput.style.display = "block";
+    
+            emailDisplay.style.display = "none";
+            emailInput.style.display = "block";
+    
+            phoneDisplay.style.display = "none";
+            phoneInput.style.display = "block";
+    
+            addressDisplay.style.display = "none";
+            addressInput.style.display = "block";
+    
+            editButton.style.display = "none";
+            saveButton.style.display = "inline-block";
+        });
+    
+        // Khi nhấn Save
+        saveButton.addEventListener("click", function () {
+            // Lấy giá trị từ input
+            const updatedProfile = {
+                name: nameInput.value,
+                email: emailInput.value,
+                phone: phoneInput.value,
+                address: addressInput.value,
+            };
+    
+            // Cập nhật giao diện
+            nameDisplay.textContent = updatedProfile.name;
+            emailDisplay.textContent = updatedProfile.email;
+            phoneDisplay.textContent = updatedProfile.phone;
+            addressDisplay.textContent = updatedProfile.address;
+    
+            // Lưu dữ liệu vào localStorage
+            localStorage.setItem("profileData", JSON.stringify(updatedProfile));
+    
+            // Hiển thị lại chế độ xem, ẩn chế độ chỉnh sửa
+            nameDisplay.style.display = "block";
+            nameInput.style.display = "none";
+    
+            emailDisplay.style.display = "block";
+            emailInput.style.display = "none";
+    
+            phoneDisplay.style.display = "block";
+            phoneInput.style.display = "none";
+    
+            addressDisplay.style.display = "block";
+            addressInput.style.display = "none";
+    
+            saveButton.style.display = "none";
+            editButton.style.display = "inline-block";
+    
+            alert("Profile updated successfully!");
+        });
+    
+        // Khi tải trang, lấy dữ liệu từ localStorage
+        window.addEventListener("load", function () {
+            const savedImage = localStorage.getItem("profileImage");
+            if (savedImage) {
+                profileImage.src = savedImage;
+            }
+    
+            const savedProfile = JSON.parse(localStorage.getItem("profileData"));
+            if (savedProfile) {
+                nameDisplay.textContent = savedProfile.name || "N/A";
+                emailDisplay.textContent = savedProfile.email || "N/A";
+                phoneDisplay.textContent = savedProfile.phone || "N/A";
+                addressDisplay.textContent = savedProfile.address || "N/A";
+    
+                nameInput.value = savedProfile.name || "";
+                emailInput.value = savedProfile.email || "";
+                phoneInput.value = savedProfile.phone || "";
+                addressInput.value = savedProfile.address || "";
+            }
+        });
+    </script>
+</body>
+</html>
