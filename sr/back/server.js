@@ -24,7 +24,7 @@ app.post("/api/register", (req, res) => {
   });
 })
 
-app.post("/api/login", async (req, res) => {
+app.post("/api/login", (req, res) => {
   const userInfo = req.body;
   AccountController.LoginController(userInfo.email, userInfo.password).then((login) => {
       if (login == true) {
@@ -71,6 +71,37 @@ app.get("/api/logout", (req, res) => {
     }
   });
 });
+
+app.get("/api/account", (req, res) => {
+  AccountController.GetAccountController().then((userData) => {
+    if (userData != null) {
+      res.status(201).json({
+        data: userData,
+        message: "User data return successfully",
+      });
+    } else {
+      res.status(400).json({
+        data: null,
+        message: "User data is not existed",
+      });
+    }
+  });
+});;
+
+app.post("/api/upd-acc", (req, res) => {
+  const newUserInfo = req.body;
+  AccountController.UpdateAccountController(newUserInfo).then((result) => {
+    if (result != null) {
+      res.status(201).json({
+        message: "User data update successfully",
+      });
+    } else {
+      res.status(400).json({
+        message: "User data update failed",
+      });
+    }
+  });
+})
 
 // Lắng nghe yêu cầu tại cổng
 app.listen(PORT, () => {

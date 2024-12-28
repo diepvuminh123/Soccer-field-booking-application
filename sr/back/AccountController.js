@@ -42,9 +42,19 @@ function isAuth() {
   }
 }
 
+function GetAccountController() {
+  return AccountModel.getUserAccount();
+}
+
+function UpdateAccountController(info) {
+  return AccountModel.updateUserAccount(info);
+}
+
 module.exports = {
   RegisterController,
   LoginController,
   LogoutController,
   isAuth,
+  GetAccountController,
+  UpdateAccountController,
 };

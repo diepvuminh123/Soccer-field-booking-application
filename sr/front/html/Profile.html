@@ -89,7 +89,7 @@
     
         const profileImage = document.getElementById("profileImage");
         const fileInput = document.getElementById("fileInput");
-    
+        
         // Khi nhấn vào ảnh, mở hộp thoại chọn file
         profileImage.addEventListener("click", function () {
             fileInput.click();
@@ -144,7 +144,7 @@
             addressDisplay.textContent = updatedProfile.address;
     
             // Lưu dữ liệu vào localStorage
-            localStorage.setItem("profileData", JSON.stringify(updatedProfile));
+            updateUserProfile(updatedProfile)
     
             // Hiển thị lại chế độ xem, ẩn chế độ chỉnh sửa
             nameDisplay.style.display = "block";
@@ -161,30 +161,45 @@
     
             saveButton.style.display = "none";
             editButton.style.display = "inline-block";
-    
-            alert("Profile updated successfully!");
         });
     
-        // Khi tải trang, lấy dữ liệu từ localStorage
-        window.addEventListener("load", function () {
+        async function getUserProfile() {
+            const account = await fetch("http://localhost:8081/api/account");
+            const userData = await account.json();
             const savedImage = localStorage.getItem("profileImage");
             if (savedImage) {
                 profileImage.src = savedImage;
             }
+            if (userData.data) {
+                nameDisplay.textContent = userData.data.name || "N/A";
+                emailDisplay.textContent = userData.data.email || "N/A";
+                phoneDisplay.textContent = userData.data.phone || "N/A";
+                addressDisplay.textContent = userData.data.address || "N/A";
+        
+                nameInput.value = userData.data.name || "";
+                emailInput.value = userData.data.email || "";
+                phoneInput.value = userData.data.phone || "";
+                addressInput.value = userData.data.address || "";
+            }    
+        }
+
+        async function updateUserProfile(newUserInfo) {
+            fetch("http://localhost:8081/api/upd-acc", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newUserInfo),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(data.message);
+                })
+                .catch((error) => console.error("Error updating account:", error));;
+        }
     
-            const savedProfile = JSON.parse(localStorage.getItem("profileData"));
-            if (savedProfile) {
-                nameDisplay.textContent = savedProfile.name || "N/A";
-                emailDisplay.textContent = savedProfile.email || "N/A";
-                phoneDisplay.textContent = savedProfile.phone || "N/A";
-                addressDisplay.textContent = savedProfile.address || "N/A";
-    
-                nameInput.value = savedProfile.name || "";
-                emailInput.value = savedProfile.email || "";
-                phoneInput.value = savedProfile.phone || "";
-                addressInput.value = savedProfile.address || "";
-            }
-        });
+        // Khi tải trang, lấy dữ liệu từ database
+        window.addEventListener("load", getUserProfile())
     </script>
 </body>
 </html>

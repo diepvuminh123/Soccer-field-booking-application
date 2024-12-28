@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const key = require("./key.json");
@@ -112,7 +112,7 @@ function refreshToken() {
   });
 }
 
-async function UserAccount(credential) {
+async function getUserAccount() {
   try {
     // Wait for connection to database first
     await client.connect();
@@ -121,27 +121,44 @@ async function UserAccount(credential) {
     // Get the collection before query
     const userCol = db.collection("User");
 
-    const loginUser = await userCol.findOne(credential);
+    const currentUser = checkAuth();
+    const userData = await userCol.findOne({
+      _id: ObjectId.createFromHexString(currentUser.userID),
+    });
 
-    if (loginUser != null) {
-      console.log("Found User! Logging in...");
-      const token = jwt.sign(
-        { userID: loginUser._id, username: loginUser.email },
-        jwtKey,
-        {
-          expiresIn: 3600, // 1h
-        }
-      );
-      key.userToken = token;
-      // Write token to key.json
-      fs.writeFile("sr/back/key.json", JSON.stringify(key, null, 2), (err) => {
-        if (err) throw err;
-        console.log("Done writing token");
-      });
+    if (userData != null) {
+      console.log("Found User! Returning data...");
     } else {
-      console.log("User not found");
+      console.log("User data not found");
     }
-    return loginUser;
+    return userData
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+
+async function updateUserAccount(info) {
+  try {
+    // Wait for connection to database first
+    await client.connect();
+    // Get the whole database object
+    const db = client.db("Soccer_Field_App_DB");
+    // Get the collection before query
+    const userCol = db.collection("User");
+
+    const currentUser = checkAuth();
+    const filter = { _id: ObjectId.createFromHexString(currentUser.userID) };
+    const updateDoc = {
+      $set: info
+    }
+    const updateResult = await userCol.updateOne(filter, updateDoc);
+    if (updateResult != null) {
+      console.log("Found User! Updating data...");
+    } else {
+      console.log("User data not found");
+    }
+    return updateResult;
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
@@ -153,5 +170,6 @@ module.exports = {
   LoginAccount,
   LogoutAccount,
   checkAuth,
-  UserAccount,
+  getUserAccount,
+  updateUserAccount,
 };
