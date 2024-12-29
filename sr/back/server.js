@@ -103,6 +103,38 @@ app.post("/api/upd-acc", (req, res) => {
   });
 })
 
+
+const fieldController = require("./fieldController");
+
+app.use(express.json());
+
+app.get("/api/fields", fieldController.getAllFields);
+app.get("/api/fields/:id", fieldController.getFieldById);
+app.post("/api/fields", fieldController.createField);
+app.put("/api/fields/:id", fieldController.updateField);
+app.delete("/api/fields/:id", fieldController.deleteField);
+
+const userController = require("./userController");
+
+router.post("/api/users/register", userController.registerUser);
+router.post("/api/users/login", userController.loginUser);
+router.get("/api/users/profile", userController.getUserProfile);
+router.put("/api/users/profile", userController.updateUserProfile);
+
+module.exports = router;
+
+
+const bookingController = require("./bookingController");
+
+router.get("/api/bookings", bookingController.getAllBookings);
+router.get("/api/bookings/:id", bookingController.getBookingById);
+router.post("/api/bookings", bookingController.createBooking);
+router.put("/api/bookings/:id", bookingController.updateBooking);
+router.delete("/api/bookings/:id", bookingController.cancelBooking);
+
+module.exports = router;
+
+
 // Lắng nghe yêu cầu tại cổng
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
