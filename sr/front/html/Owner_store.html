@@ -1,20 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <script src="../js/Navbar.js"></script>
-    <script src="../js/Login.js"></script>
-    
-    <link rel="stylesheet" href="../css/Login.css">
-    <!--Link bootstrap-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trang mới</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+        <link rel="stylesheet" href="../css/Owner_store.css">
+         <script src="../js/Navbar.js"></script>
+         <script src="../js/Footer.js"></script>
+         <script src="../js/Owner_store.js"></script>
+         <!-- Bootstrap js -->
+         
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      </head>
 <body>
     <header><div id="navbar"></div></header>
+    <!-- Banner Section -->
+<section class="banner">
+    <div class="banner-content">
+      <img src="../imagine/chan-thuong-trong-bong-da.jpg" alt="The Yard Logo" class="logo1">
+      <div class="text-content">
+        <h1>The Yard (Multi-Sport Facility)</h1>
+        <p>870 Taunton Rd W, Oshawa, ON L1L 0P1</p>
+      </div>
+    </div>
+</section>
+<body>
+  <section class="schedule-container">
+    <div class="header">
+      <button class="spaces-btn">All Spaces</button>
+      <span class="date-range">Dec 29, 2024 – Jan 4, 2025</span>
+      <div class="navigation">
+        <button class="nav-btn">❮</button>
+        <button class="nav-btn">❯</button>
+      </div>
+    </div>
+    <div class="info">
+      <p><i>The <span class="blue-text">blue blocks</span> represent the <b>available times</b> at the facility.</i></p>
+    </div>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Sun 12/29</th>
+          <th>Mon 12/30</th>
+          <th>Tue 12/31</th>
+          <th>Wed 1/1</th>
+          <th>Thu 1/2</th>
+          <th>Fri 1/3</th>
+          <th>Sat 1/4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example rows with blue blocks -->
+        <tr>
+          <td>7am</td>
+          <td></td><td></td><td></td><td></td><td></td><td class="blue-block"></td><td></td>
+        </tr>
+        <tr>
+          <td>8am</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td>3pm</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td class="blue-block"></td>
+        </tr>
+        <tr>
+          <td>4pm</td>
+          <td></td><td></td><td></td><td></td><td></td><td class="blue-block"></td><td></td>
+        </tr>
+        <tr>
+          <td>6pm</td>
+          <td></td><td></td><td></td><td></td><td></td><td class="blue-block" ></td><td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+        <button class="action-btn" id="get-directions" onclick="window.location.href='https://maps.app.goo.gl/pgxH82Ry9fefUgnd6'">Get Directions</button>
+        <button class="action-btn alert-btn">Get Alerts</button>
+      </div>
+  </section>
 
 </body>
 </html>

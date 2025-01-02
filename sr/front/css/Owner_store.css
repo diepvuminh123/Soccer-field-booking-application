@@ -1,1 +1,166 @@
+header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 1000; 
+}
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+/* Banner Section */
+.banner {
+    position: relative;
+    height: 150px;
+    background: url(../imagine/Sân\ cỏ\ 4.jpg) center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    text-align: start;
+    margin-top: 76px;
+    
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 1; /* Ensures content appears above the background */
+}
+
+.logo1 {
+    height: 80px;
+    width: auto;
+    margin-left: 120px;
+    border-radius: 5px;
+}
+
+.text-content h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: white;
+}
+
+.text-content p {
+    margin: 5px 0 0;
+    font-size: 1em;
+    color: white;
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Adds a dark overlay */
+    z-index: 0; /* Keeps the overlay behind the content */
+}
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  /* Schedule Section */
+  .schedule-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .spaces-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .date-range {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+  
+  .nav-btn {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  .info {
+    margin: 10px 0;
+  }
+  
+  .blue-text {
+    color: #007bff;
+  }
+  
+  /* Schedule Table */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .schedule-table th, .schedule-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .schedule-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .blue-block {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  
+  /* Actions */
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .action-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .alert-btn {
+    background-color: #00274d;
+  }
+  
 
