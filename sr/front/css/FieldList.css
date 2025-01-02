@@ -4,6 +4,10 @@ body {
   padding: 0;
   background-color: #f9f9f9;
 }
+main{
+  
+  margin-top: 5%;
+}
 
 .container {
   width: 90%;
@@ -80,3 +84,4 @@ h1, h2 {
   background: #007bff;
   color: #fff;
 }
+
