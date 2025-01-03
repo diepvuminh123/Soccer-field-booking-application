@@ -8,7 +8,7 @@ body, html {
 }
 
 .background {
-    background-image: url('../imagine/Sân cỏ 4.jpg');
+    background-image: url('../imagine/booking\ 1.jpg');
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -18,42 +18,50 @@ body, html {
 }
 
 .booking-form {
-    background-color: rgba(253, 236, 198, 0.9);
-    padding: 20px;
-    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
     max-width: 500px;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .booking-form h2 {
     text-align: center;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .booking-form .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .booking-form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
 }
 
 .booking-form input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 1rem;
 }
 
 .booking-form button {
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 20px;
+    padding: 12px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
 }
 
 .booking-form button:hover {
@@ -66,73 +74,80 @@ body, html {
     color: #4CAF50;
     text-align: center;
 }
+
 .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-            background-color: #fdfdf6;
-        }
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fdfdf6;
+}
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #333;
-        }
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
 
-        p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            color: #555;
-        }
+p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #555;
+}
 
-        .cards {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+.cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
-        .card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            flex: 1;
-            max-width: 220px;
-            padding: 15px;
-            text-align: center;
-            overflow: hidden;
-        }
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 220px;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
 
-        .card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
+.card:hover {
+    transform: translateY(-10px);
+}
 
-        .card h3 {
-            font-size: 1.3em;
-            margin: 15px 0 10px;
-        }
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
 
-        .card p {
-            font-size: 1em;
-            color: #666;
-            margin-bottom: 15px;
-        }
+.card h3 {
+    font-size: 1.3em;
+    margin: 15px 0 10px;
+    color: #333;
+}
 
-        .card button {
-            background-color: #f4ca51;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+.card p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
+}
 
-        .card button:hover {
-            background-color: #e0b944;
-        }
+.card button {
+    background-color: #f4ca51;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card button:hover {
+    background-color: #e0b944;
+}
