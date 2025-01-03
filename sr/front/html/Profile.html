@@ -61,6 +61,14 @@
                         <h3>Total Bookings</h3>
                         <p style="font-size: 48px; font-weight: bold; color: #4CAF50;">12</p>
                     </div>
+                
+                    <!-- Booking Details Section -->
+                    <div class="booking-details-section mt-4">
+                        <h3>Booking Details</h3>
+                        <div id="bookingDetails">
+                            <p>No bookings yet.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -198,6 +206,41 @@
         // Khi tải trang, lấy dữ liệu từ database
         window.addEventListener("load", getUserProfile())
     </script>
+  <script>
+    window.addEventListener("load", function() {
+    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    const totalBookingsCount = document.querySelector(".total-bookings-section p");
+    const bookingDetails = document.getElementById("bookingDetails");
+
+    // Cập nhật tổng số bookings
+    totalBookingsCount.textContent = bookings.length;
+
+    // Hiển thị danh sách bookings
+    if (bookings.length > 0) {
+        bookingDetails.innerHTML = ""; // Xóa thông báo mặc định
+        const bookingList = document.createElement("ul");
+        bookingList.classList.add("list-group");
+
+        bookings.forEach((booking, index) => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("list-group-item");
+            listItem.innerHTML = `
+                <strong>Booking ${index + 1}</strong><br>
+                <strong>Field Name:</strong> ${booking.fieldName}<br>
+                <strong>Location:</strong> ${booking.fieldLocation}<br>
+                <strong>Date:</strong> ${booking.date}<br>
+                <strong>Start Time:</strong> ${booking.startTime}<br>
+                <strong>End Time:</strong> ${booking.endTime}
+            `;
+            bookingList.appendChild(listItem);
+        });
+
+        bookingDetails.appendChild(bookingList);
+    } else {
+        bookingDetails.innerHTML = "<p>No bookings yet.</p>";
+    }
+});
+</script>
 </body>
 <footer><div id="Footer"></div></footer>
 </html>
