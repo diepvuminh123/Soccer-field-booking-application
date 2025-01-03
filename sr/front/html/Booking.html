@@ -86,10 +86,10 @@
 
 </body>
 <script>
-    document.getElementById("bookingForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Ngăn reload trang
+    document.getElementById("bookingForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Ngăn trang reload
 
-        // Thu thập thông tin từ form
+        // Lấy thông tin từ form
         const bookingInfo = {
             fieldName: document.getElementById("field-name").value,
             fieldLocation: document.getElementById("field-location").value,
@@ -103,12 +103,11 @@
         bookings.push(bookingInfo);
         localStorage.setItem("bookings", JSON.stringify(bookings));
 
-        // Debug log
+        // Debug: Kiểm tra trong Console
         console.log("Booking Info Saved:", bookingInfo);
-        console.log("All Bookings:", bookings);
 
         // Chuyển hướng sang Profile.html
-        window.location.href = "Profile.html"; // Đảm bảo đường dẫn đúng
+        window.location.href = "Profile.html";
     });
 </script>
 </html>
