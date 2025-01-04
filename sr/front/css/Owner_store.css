@@ -171,6 +171,10 @@ body {
     font-size: 1em;
     border-radius: 5px;
     cursor: pointer;
+    transition: width 0.3s ease,height 0.3s ease,box-shadow 0.3s ease,transform 0.3s ease;
+  }
+  .action-btn:hover {
+    transform: scale(1.1);
   }
   
   .alert-btn {
