@@ -40,10 +40,20 @@ header {
 .feature-item {
     text-align: center;
     width: 280px;
-    background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    
     border-radius: 10px;
+    transition:witdh 0.3s ease, height 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    
+}
+.feature-item:hover{
+    transform: scale(1.1);
+}
+.feature-item button:hover {
+    background-color: #5a8fc5;    
+}
+.feature-item a{
+    text-decoration: none;
+    color: #fff;
 }
 
 .feature-item img {
@@ -70,9 +80,7 @@ header {
     margin-top: 10px;
 }
 
-.feature-item button:hover {
-    background-color: #495057; 
-}
+
 .news-section {
     text-align: center;
     padding: 20px;
@@ -107,6 +115,13 @@ header {
     text-align: left;
     width: 250px;
     padding: 15px;
+    transition:width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    
+}
+.news-item:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
 }
 
 .news-item img {
@@ -133,6 +148,7 @@ header {
     margin-bottom: 15px;
 }
 
+
 /* Button styling */
 .btn1 {
     background-color: #fcd13c;
@@ -147,7 +163,7 @@ header {
 }
 
 .btn1:hover {
-    background-color: #455e45;
+    background-color: #5a8fc5;
 }
 /* Hero Section */
 .hero-section {
@@ -273,7 +289,7 @@ header {
     display: flex;
     flex-direction: column;
     
-    height: 400px;
+    height: auto;
     column-gap: 10px;
     
 }
