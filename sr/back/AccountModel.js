@@ -122,16 +122,17 @@ async function getUserAccount() {
     const userCol = db.collection("User");
 
     const currentUser = checkAuth();
-    const userData = await userCol.findOne({
-      _id: ObjectId.createFromHexString(currentUser.userID),
-    });
-
-    if (userData != null) {
-      console.log("Found User! Returning data...");
-    } else {
-      console.log("User data not found");
+    if (currentUser != null) {
+      const userData = await userCol.findOne({
+        _id: ObjectId.createFromHexString(currentUser.userID),
+      });
+      if (userData != null) {
+        console.log("Found User! Returning data...");
+      } else {
+        console.log("User data not found");
+      }
+      return userData
     }
-    return userData
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
@@ -148,17 +149,19 @@ async function updateUserAccount(info) {
     const userCol = db.collection("User");
 
     const currentUser = checkAuth();
-    const filter = { _id: ObjectId.createFromHexString(currentUser.userID) };
-    const updateDoc = {
-      $set: info
+    if (currentUser != null) {
+      const filter = { _id: ObjectId.createFromHexString(currentUser.userID) };
+      const updateDoc = {
+        $set: info
+      }
+      const updateResult = await userCol.updateOne(filter, updateDoc);
+      if (updateResult != null) {
+        console.log("Found User! Updating data...");
+      } else {
+        console.log("User data not found");
+      }
+      return updateResult;
     }
-    const updateResult = await userCol.updateOne(filter, updateDoc);
-    if (updateResult != null) {
-      console.log("Found User! Updating data...");
-    } else {
-      console.log("User data not found");
-    }
-    return updateResult;
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();

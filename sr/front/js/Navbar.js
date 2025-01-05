@@ -24,7 +24,7 @@ async function checkLoginStatus() {
     if (data.isLoggedIn) {
         // Nếu đã đăng nhập, ẩn "Đăng nhập" và "Đăng ký", hiện "Đăng xuất"
         console.log("User is logged in")
-        infoItem.style.display = 'none';
+        infoItem.style.display = 'block';
         loginItem.style.display = 'none';
         registerItem.style.display = 'none';
         logoutItem.style.display = 'block';
@@ -32,7 +32,7 @@ async function checkLoginStatus() {
       } else {
         // Nếu chưa đăng nhập, hiện "Đăng nhập" và "Đăng ký", ẩn "Đăng xuất"
         console.log("User is not logged in")
-        infoItem.style.display = 'block';
+        infoItem.style.display = 'none';
         loginItem.style.display = 'block';
         registerItem.style.display = 'block';
         logoutItem.style.display = 'none';
