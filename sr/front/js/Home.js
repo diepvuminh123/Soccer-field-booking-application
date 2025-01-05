@@ -39,3 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     counters.forEach((counter) => observer.observe(counter));
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const toastTrigger = document.getElementById('liveToastBtn');
+    const toastLiveExample = document.getElementById('liveToast');
+  
+    if (toastTrigger && toastLiveExample) {
+      const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+      toastTrigger.addEventListener('click', () => {
+        toastBootstrap.show();
+      });
+    }
+  });
+  
+

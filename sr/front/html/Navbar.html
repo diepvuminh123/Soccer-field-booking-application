@@ -11,7 +11,7 @@
   
 </head>
 <body>
-  <header h->
+  <header>
     <div class="header-container">
       <a href="../html/Home.html" style="text-decoration: none;"><div class="logo">
         <img src="../imagine/football.png" alt="Logo">
@@ -22,8 +22,8 @@
       <div class="vertical-line"></div>
       <nav class="nav-header">
         <a href="../html/Home.html">Trang chủ</a>
-        <a href="../html/FieldList.html">Danh sách sân</a>
-        <a href="../html/Booking.html">Đặt sân</a>
+        <a id="scrollButton" href="#">Liên hệ</a>
+        <a href="../html/Booking.html" >Đặt sân</a>
         <a href="../html/Owner.html">Dành cho chủ sân</a>
       </nav>
       <div class="user-options logo1">
@@ -50,5 +50,17 @@
         </div>
       </div>
     </header>
+    <script>
+      document.getElementById('scrollButton').addEventListener('click', function(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định
+        const pageHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+        window.scrollTo({
+          top: pageHeight,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+    
 </body>
+
 </html>

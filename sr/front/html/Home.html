@@ -205,17 +205,49 @@
 </section>
 <section class="contact-section">
   <h2 class="contact-title">Liên Hệ Với Chúng Tôi</h2>
-  <form class="contact-form">
+  <form class="contact-form" style="z-index: 1050;">
       <div class="form-group">
           <input type="text" name="name" placeholder="Tên" required>
           <input type="email" name="email" placeholder="Email" required>
       </div>
       <input type="tel" name="phone" placeholder="Điện Thoại" required>
       <textarea name="message" placeholder="Tin Nhắn" rows="5" required></textarea>
-      <button type="submit" class="btn-submit">Gửi Ngay</button>
+      <button type="button" class="btn btn-submit" id="liveToastBtn">Gửi</button>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="../imagine/football.png" class="rounded me-2" alt="..." style="width: 20px; height: 20px;">
+      <strong class="me-auto">Hệ thống</strong>
+      <small>1 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Thông tin liên hệ của bạn đã được gửi đi thành công!
+    </div>
+  </div>
+</div>
   </form>
 </section>
- </main>
+</main>
+<!-- Container chứa các biểu tượng chat -->
+<div class="chat-icons">
+  <!-- Biểu tượng Messenger -->
+  <a href="https://m.me/YOUR_FACEBOOK_ID" class="messenger" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Chat Messenger">
+  </a>
+
+  <!-- Biểu tượng Zalo -->
+  <a href="https://zalo.me/YOUR_ZALO_ID" class="zalo" target="_blank">
+    <img src="https://stc-zaloprofile.zdn.vn/pc/v1/images/zalo_sharelogo.png" alt="Chat Zalo">
+  </a>
+
+  <!-- Biểu tượng WhatsApp -->
+  <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" class="whatsapp" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="Chat WhatsApp">
+  </a>
+</div>
+ 
  <footer><div id="Footer"></div></footer>
 </body>
 </html>

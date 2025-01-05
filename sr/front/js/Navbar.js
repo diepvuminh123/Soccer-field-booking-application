@@ -1,9 +1,18 @@
 fetch("Navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar").innerHTML = data;
-      })
-      .catch(error => console.error('Không thể tải Navbar:', error));
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
+
+    // Gắn sự kiện sau khi chèn Navbar
+    document.getElementById('scrollButton').addEventListener('click', function(event) {
+      event.preventDefault(); // Ngăn chặn hành vi mặc định
+      window.scrollTo({
+        top: document.body.scrollHeight, // Cuộn đến cuối trang
+        behavior: 'smooth' // Hiệu ứng cuộn mượt mà
+      });
+    });
+  })
+  .catch(error => console.error('Không thể tải Navbar:', error));
 
 // Gọi hàm khi trang được tải
 document.addEventListener("DOMContentLoaded", checkLoginStatus)
@@ -56,3 +65,12 @@ async function logout() {
     console.error("Error checking auth status:", error);
   }
 }
+
+document.getElementById('scrollButton').addEventListener('click', function(event) {
+  event.preventDefault(); // Ngăn chặn hành vi mặc định
+  window.scrollTo({
+    top: document.body.scrollHeight, // Cuộn đến cuối trang
+    behavior: 'smooth' // Hiệu ứng cuộn mượt mà
+  });
+});
+    
