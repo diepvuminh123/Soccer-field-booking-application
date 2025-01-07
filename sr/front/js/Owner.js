@@ -6,9 +6,9 @@ const fieldPrices = {
 };
 // test
 const bookings = [
-    { date: "2025-01-02", time: "15:00", field: "Sân 5 người", customer: "Nguyễn Văn A", status: "Đã xác nhận" },
+    { date: "2025-01-02", time: "15:00", field: "Sân 5 người", customer: "Nguyễn Văn A", status: "Chưa xác nhận" },
     { date: "2025-01-03", time: "18:00", field: "Sân 7 người", customer: "Trần Thị B", status: "Chưa xác nhận" },
-    { date: "2025-01-04", time: "19:00", field: "Sân 11 người", customer: "Phạm Văn C", status: "Đã xác nhận" },
+    { date: "2025-01-04", time: "19:00", field: "Sân 11 người", customer: "Phạm Văn C", status: "Chưa xác nhận" },
 ];
 
 // load booking request
@@ -18,9 +18,9 @@ function loadBookingRequests() {
 
     // test
     const bookingRequests = [
-        { date: "2025-01-02", time: "15:00-16:00", field: "Sân 5 người", customer: "Nguyễn Văn A", status: "Đã xác nhận" },
+        { date: "2025-01-02", time: "15:00-16:00", field: "Sân 5 người", customer: "Nguyễn Văn A", status: "Chưa xác nhận" },
         { date: "2025-01-03", time: "18:00-19:00", field: "Sân 7 người", customer: "Trần Thị B", status: "Chưa xác nhận" },
-        { date: "2025-01-04", time: "19:00-20:00", field: "Sân 11 người", customer: "Phạm Văn C", status: "Đã xác nhận" },
+        { date: "2025-01-04", time: "19:00-20:00", field: "Sân 11 người", customer: "Phạm Văn C", status: "Chưa xác nhận" },
     ];
 
     bookingRequests.forEach(bookingRequest => {
