@@ -224,34 +224,51 @@
     </script>
     <script>
         window.addEventListener("load", function () {
-            const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-            const tableBody = document.querySelector("#bookingTable tbody");
-    
-            // Xóa dòng mặc định nếu có dữ liệu
-            if (bookings.length > 0) {
-                tableBody.innerHTML = "";
-            }
-    
-            // Duyệt qua danh sách booking và hiển thị từng dòng
-            bookings.forEach((booking, index) => {
-                const statusOptions = ["Đã xác nhận", "Đang xác nhận", "Đã hủy"];
-                const randomStatus = statusOptions[Math.floor(Math.random() * statusOptions.length)];
-                const payment = Math.floor(Math.random() * 1000000) + 50000; // Số tiền thanh toán giả định
-    
-                const row = `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${booking.fieldName}</td>
-                        <td>${booking.date}</td>
-                        <td>${booking.startTime}</td>
-                        <td>${booking.endTime}</td>
-                        <td>${randomStatus}</td>
-                        <td>${payment.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
-                    </tr>
-                `;
-                tableBody.innerHTML += row;
-            });
-        });
+    const bookings = [
+        {
+            fieldName: "Sân Ulis",
+            date: "2025-01-10",
+            startTime: "08:00",
+            endTime: "09:30",
+            status: "Đang xác nhận",
+            payment: 150000,
+        },
+        {
+            fieldName: "Sân Ulis",
+            date: "2025-01-12",
+            startTime: "15:00",
+            endTime: "16:30",
+            status: "Đang xác nhận",
+            payment: 200000,
+        },
+        {
+            fieldName: "Sân Ulis",
+            date: "2025-01-15",
+            startTime: "18:00",
+            endTime: "19:30",
+            status: "Đang xác nhận",
+            payment: 250000,
+        },
+    ];
+
+    const tableBody = document.querySelector("#bookingTable tbody");
+    tableBody.innerHTML = ""; // Xóa dòng mặc định
+
+    bookings.forEach((booking, index) => {
+        const row = `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${booking.fieldName}</td>
+                <td>${booking.date}</td>
+                <td>${booking.startTime}</td>
+                <td>${booking.endTime}</td>
+                <td>${booking.status}</td>
+                <td>${booking.payment.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+});
     </script>
 </body>
 <footer><div id="Footer"></div></footer>
