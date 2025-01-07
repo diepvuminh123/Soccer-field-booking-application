@@ -250,4 +250,18 @@
  
  <footer><div id="Footer"></div></footer>
 </body>
+<script>
+  document.getElementById('liveToastBtn').addEventListener('click', function() {
+   
+    const form = document.querySelector('.contact-form');
+    const inputs = form.querySelectorAll('input, textarea');
+
+    
+    inputs.forEach(input => input.value = '');
+
+    
+    const toast = new bootstrap.Toast(document.getElementById('liveToast'));
+    toast.show();
+  });
+</script>
 </html>
